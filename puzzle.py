@@ -15,27 +15,21 @@ keha5ala1 = [8,4,4,4,1,10,10,6] # Kiinni
 keha5ala2 = [13,16,14,5,14,17,5,14] # Jos kehaxyla alku pisteessä niin silloin on ala 2 ensin näkyvillä, ala1 jää ylemmän kehän alle
 keha5yla = [6,8,8,16,19,8,13,6]
 
-# keha2vaihtoehto = 0 # parillinen tarkoittaa ala2 ja pariton ala1
-# keha3vaihtoehto = 0
-# keha4vaihtoehto = 0
-# keha5vaihtoehto = 0
 yritykset = 0
 maxOikeatSarakkeet = 0
 
-#tulosEnnenMuutosta = 0
 #Jos ala1 on käytössä, niin tällöin se on lukittu aikaisempaan ylä kehän samaan indexiin, ei voi liikuttaa vapaasti.
 
 def MuodostaYmpyra(ylalista, alalista, alaeka = False):
     yhdistettyLista = []
     i = 0
-    print('---')
     if alaeka == False:
         for a in range(8):
 
             yhdistettyLista.append(ylalista[i])
             yhdistettyLista.append(alalista[i])
             i += 1
-        print(yhdistettyLista)
+
         return yhdistettyLista
     else:
         for a in range(8):
@@ -43,7 +37,7 @@ def MuodostaYmpyra(ylalista, alalista, alaeka = False):
             yhdistettyLista.append(alalista[i])
             yhdistettyLista.append(ylalista[i])
             i += 1
-        print(yhdistettyLista)
+
         return yhdistettyLista
 
 
@@ -51,93 +45,6 @@ def MoveFirstNumberToLast(lista):
     talteen = lista[0]
     lista.pop(0)
     lista.append(talteen)
-
-
-# def TarkistaSarakkeet(keha2ympyraKaytossa= 0, keha3ympyraKaytossa = 0, keha4ympyraKaytossa = 0, keha5ympyraKaytossa = 0):
-#     oikeat_sarakkeet = 0
-#     # 16 saraketta yhteensä, kaikkiin pitää saada summa 46
-#     # while oikeat_sarakkeet != 16:
-#     global yritykset
-#
-#     oikeaTulos = 46
-#
-#     yritykset += 1
-#     print('Yritykset: ', yritykset)
-#     sarake = 0
-#     sarakeTulos = {}
-#     alaI = 0  # käytetään arrayn läpi käymiseen
-#     ylaI = 0  # käytetään arrayn läpi käymiseen
-#     parillinenSarake = 1
-#
-#     for a in range(8):
-#         # print('sarake:' + str(sarake + 1))
-#         # if parillinenSarake % 2 == 1:
-#         #     sarakeTulos[sarake] = 0
-#         #     sarakeTulos[sarake] = a
-#         #     sarakeTulos[sarake] += keha2yla[ylaI]
-#         #     sarakeTulos[sarake] += keha3yla[ylaI]
-#         #     sarakeTulos[sarake] += keha4yla[ylaI]
-#         #     sarakeTulos[sarake] += keha5yla[ylaI]
-#         #     ylaI += 1
-#         # else:           #Tällä hetkellä tarkastetaan niin että ylä sarakkeet on parillisilla sarakkeilla ala parittomilla, KORJAA
-#         sarakeTulos[sarake] = 0
-#         sarakeTulos[sarake+1] = 0
-#         sarakeTulos[sarake] = keha1[sarake]
-#         sarakeTulos[sarake+1] = keha1[sarake+1]
-#         if keha2ympyraKaytossa % 2 == 0:
-#
-#             sarakeTulos[sarake] += keha2yla[ylaI]
-#             sarakeTulos[(sarake + 1)] += keha2ala2[alaI]
-#         else:
-#             sarakeTulos[sarake] += keha2ala1[alaI]
-#             sarakeTulos[sarake+1] += keha2yla[ylaI]
-#
-#         if keha3ympyraKaytossa % 2 == 0:
-#
-#             sarakeTulos[sarake] += keha3yla[ylaI]
-#             sarakeTulos[sarake + 1] += keha3ala2[alaI]
-#         else:
-#             sarakeTulos[sarake] += keha3ala1[alaI]
-#             sarakeTulos[sarake + 1] += keha3yla[ylaI]
-#
-#         if keha4ympyraKaytossa % 2 == 0:
-#
-#             sarakeTulos[sarake] += keha4yla[ylaI]
-#             sarakeTulos[sarake + 1] += keha4ala2[alaI]
-#         else:
-#             sarakeTulos[sarake] += keha4ala1[alaI]
-#             sarakeTulos[sarake + 1] += keha4yla[ylaI]
-#
-#         if keha5ympyraKaytossa % 2 == 0:
-#
-#             sarakeTulos[sarake] += keha5yla[ylaI]
-#             sarakeTulos[sarake + 1] += keha5ala2[alaI]
-#         else:
-#             sarakeTulos[sarake] += keha5ala1[alaI]
-#             sarakeTulos[sarake + 1] += keha5yla[ylaI]
-#         alaI += 1
-#         ylaI += 1
-#         # print(f'sarakkeen {sarake} summa: {str(sarakeTulos[sarake])}')
-#         parillinenSarake += 1
-#         sarake +=2
-#
-#
-#     print(sarakeTulos)
-#
-#     oikeat_sarakkeet = 0 # 16 saraketta pitää saada
-#     for summa in sarakeTulos:
-#         if sarakeTulos[summa] == 46:
-#
-#             oikeat_sarakkeet += 1
-#     print('oikeat sarakkeet: ',oikeat_sarakkeet)
-#     global maxOikeatSarakkeet
-#     if maxOikeatSarakkeet < oikeat_sarakkeet:
-#         maxOikeatSarakkeet = oikeat_sarakkeet
-#
-#     if oikeat_sarakkeet == 16: # Lopetetaan looppi jos 16 oikein
-#         # break
-#         print('Oikein!')
-#         exit()
 
 
 
@@ -169,8 +76,12 @@ def LaskeSarakkeet(keha2, keha3, keha4, keha5):
         maxOikeatSarakkeet = oikeat_sarakkeet
 
     if oikeat_sarakkeet == 16:  # Lopetetaan looppi jos 16 oikein
-        # break
         print('Oikein!')
+        print('kehä1: ', keha1)
+        print('kehä2: ', keha2lista)
+        print('keha3: ', keha3lista)
+        print('keha4: ', keha4lista)
+        print('keha5: ', keha5lista)
         exit()
 
 
@@ -217,7 +128,7 @@ for b in range(16):
                         keha5lista = MuodostaYmpyra(keha5yla, keha5ala2, True)
                 LaskeSarakkeet(keha2lista, keha3lista, keha4lista, keha5lista)
 
-                # TarkistaSarakkeet(keha5ympyraKaytossa=keha5vaihtoehto, keha4ympyraKaytossa=keha4vaihtoehto, keha3ympyraKaytossa=keha3vaihtoehto, keha2ympyraKaytossa=keha2vaihtoehto)
+
                 print('-------------')
 
             if d % 2 == 0:
@@ -238,7 +149,6 @@ for b in range(16):
         MoveFirstNumberToLast(keha3ala1)
     else:
         MoveFirstNumberToLast(keha3ala2)
-
 
 
 print('max oikeat sarakkeet: ', maxOikeatSarakkeet)
